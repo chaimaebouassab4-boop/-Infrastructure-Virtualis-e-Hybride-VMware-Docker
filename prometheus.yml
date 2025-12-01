@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # [cite_start]Job pour récupérer les métriques Docker via cAdvisor [cite: 1331]
+  - job_name: 'docker_containers'
+    static_configs:
+      - targets: ['cadvisor:8080']
